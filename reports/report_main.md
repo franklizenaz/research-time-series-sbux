@@ -314,7 +314,9 @@ Regresando a las predicciones clásicas para el modelo SARIMAX ajustado obtenemo
 ### **6.1. Anexos y Recursos Computacionales**
 Para garantizar la total transparencia y la reproducibilidad de los resultados estocásticos presentados en esta investigación, se adjuntan los siguientes recursos y *scripts* en el repositorio oficial del proyecto:
 
-* **Base de Datos Dinámica:** Archivo de eventos documentados y matriz de variables exógenas: [`data/external/news_history.csv`](../data/external/news_history.csv).
+* **Base de Datos Dinámica:** Archivo de eventos tabulados y matriz de variables exógenas: [`data/external/news_history.csv`](../data/external/news_history.csv).
+* **Eventos de Impacto:** Archivo de eventos documentados: [`reports/anexos/anexo_eventos.md`](anexos/anexo_eventos.md).
+* **Diccionario de Dummies (Shocks o Noticias):** Archivo en donde se definen la clasificación de dummies respectivas al ``anexo_eventos``: [`reports/anexos/anexo_dummies.md`](anexos/anexo_dummies.md).
 * **Entorno de Experimentación (Jupyter Notebooks):** Código fuente algorítmico, modularizado en las siguientes etapas de procesamiento [`notebooks/`](../notebooks/):
     * [`01_data_acquisition_cleaning.ipynb`](../notebooks/01_data_acquisition_cleaning.ipynb) (Extracción y limpieza).
     * [`02_eda_and_news_analysis.ipynb`](../notebooks/02_eda_and_news_analysis.ipynb) (Detección de anomalías de volumen).
