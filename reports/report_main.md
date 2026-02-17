@@ -25,6 +25,11 @@
     - [**2.2. Reseña Histórica y Crecimiento Estructural (1971-Presente)**](#22-reseña-histórica-y-crecimiento-estructural-1971-presente)
     - [**2.3. Dinámica de Liderazgo y el "Choque Estructural" (2022-Presente)**](#23-dinámica-de-liderazgo-y-el-choque-estructural-2022-presente)
     - [**2.4. Posicionamiento, Competencia y Matriz de Riesgos**](#24-posicionamiento-competencia-y-matriz-de-riesgos)
+    - [**2.5. Arquitectura de Generación de Valor y Posicionamiento Estratégico Estructural**](#25-arquitectura-de-generación-de-valor-y-posicionamiento-estratégico-estructural)
+      - [**2.5.1. Núcleo Económico del Negocio (Value Drivers Estructurales)**](#251-núcleo-económico-del-negocio-value-drivers-estructurales)
+      - [**2.5.2. Posicionamiento Competitivo en la Industria**](#252-posicionamiento-competitivo-en-la-industria)
+      - [**2.5.3. Implicancias para el Modelado Econométrico**](#253-implicancias-para-el-modelado-econométrico)
+  - [**3. Marco Teórico y Metodológico**](#3-marco-teórico-y-metodológico)
     - [**3.1. Adquisición, Preprocesamiento y Estadística Descriptiva**](#31-adquisición-preprocesamiento-y-estadística-descriptiva)
     - [**3.2. Descomposición Clásica de la Serie de Tiempo**](#32-descomposición-clásica-de-la-serie-de-tiempo)
     - [**3.3. Estacionariedad y Pruebas de Raíz Unitaria**](#33-estacionariedad-y-pruebas-de-raíz-unitaria)
@@ -71,8 +76,6 @@ El análisis estocástico de un activo financiero carece de validez si se aísla
 
 Starbucks no es únicamente un distribuidor de café; es el principal tostador y minorista de cafés de especialidad a nivel global. Su modelo de negocio se sostiene sobre el concepto sociológico del **"Tercer Lugar"** (Third Place): un espacio de transición cálido, seguro y acogedor entre el hogar y el lugar de trabajo. 
 
-Desde la perspectiva de la ingeniería económica, la empresa genera valor al transformar un *commodity* altamente volátil (el grano de café Arábica) en una experiencia *premium*. Esta estrategia de diferenciación le otorga poder de fijación de precios (Pricing Power) y fidelización, respaldada por un ecosistema digital masivo (Starbucks Rewards) que funciona, en la práctica, como un motor de liquidez anticipada a través de las recargas de saldos de sus clientes.
-
 ### **2.2. Reseña Histórica y Crecimiento Estructural (1971-Presente)**
 La consolidación de Starbucks como barómetro del consumo global es el resultado de hitos estratégicos que impulsaron un crecimiento exponencial en su infraestructura operativa:
 * **1971 a 1987 - Los Orígenes y la Fusión:** La compañía inicia con una sola tienda en el Pike Place Market de Seattle, dedicada a la venta de granos. Tras su viaje a Milán (1983), Howard Schultz identifica el potencial de la cultura "espresso". En 1987, respaldado por inversores, Schultz adquiere los activos de Starbucks (fusionándola con su empresa *Il Giornale*), operando apenas 17 tiendas en ese momento.
@@ -110,7 +113,85 @@ Si bien cualitativamente la empresa enfrenta múltiples frentes de riesgo (desde
 
 ![Matriz de Sensibilidad Exógena](../results/figures/00_radar_sensibilidad_estadistica.png)
 
----## **3. Marco Teórico y Metodológico**
+### **2.5. Arquitectura de Generación de Valor y Posicionamiento Estratégico Estructural**
+
+El comportamiento bursátil de [Starbucks](anexos/anexo_sbux.md) no puede explicarse únicamente desde su identidad de marca o sus eventos corporativos recientes, sino desde la estructura económica que sostiene su capacidad de generación de flujos de caja recurrentes. 
+
+Desde la perspectiva de la ingeniería, la empresa genera valor al transformar un *commodity* altamente volátil (el grano de café Arábica) en una experiencia *premium*. Esta estrategia de diferenciación le otorga poder de fijación de precios (Pricing Power) y fidelización, respaldada por un ecosistema digital masivo (Starbucks Rewards) que funciona, en la práctica, como un motor de liquidez anticipada a través de las recargas de saldos de sus clientes.
+
+#### **2.5.1. Núcleo Económico del Negocio (Value Drivers Estructurales)**
+
+El sistema de generación de valor de Starbucks descansa sobre tres pilares interdependientes:
+
+**1. Modelo de Margen Premium con Alta Rotación**
+
+La compañía transforma un commodity volátil (café arábica) en un producto de diferenciación experiencial.  
+Este proceso permite:
+
+- Mantener márgenes superiores al promedio del segmento QSR.
+- Ejercer *pricing power* en entornos inflacionarios.
+- Sostener elasticidades-precio relativamente bajas en mercados desarrollados.
+
+En términos financieros, este componente explica la resiliencia parcial del margen operativo incluso en ciclos contractivos.
+
+**2. Ecosistema Digital y Financiamiento Implícito (Flywheel Financiero)**
+
+El programa Starbucks Rewards opera como:
+
+- Sistema de fidelización conductual.
+- Plataforma de datos predictivos de consumo.
+- Mecanismo de financiamiento operativo sin costo vía recargas anticipadas (float).
+
+Este mecanismo reduce la volatilidad estructural de ingresos y fortalece la recurrencia del flujo de caja operativo, aspecto clave para la valoración descontada de la acción.
+
+**3. Escala Global y Diversificación Geográfica**
+
+Con presencia consolidada en América del Norte y expansión estratégica en Asia, la compañía:
+
+- Dilute costos fijos a gran escala.
+- Optimiza economías logísticas.
+- Mitiga riesgo idiosincrático regional mediante diversificación.
+
+Desde el punto de vista de estructura industrial, la escala constituye una barrera de entrada significativa frente a competidores emergentes.
+
+#### **2.5.2. Posicionamiento Competitivo en la Industria**
+
+Dentro del sector de Consumo Cíclico, Starbucks ocupa una posición estratégica intermedia:
+
+- No compite exclusivamente por precio como :contentReference[oaicite:1]{index=1}.
+- No se posiciona como cafetería artesanal local de nicho.
+- No opera bajo subsidios agresivos de expansión como :contentReference[oaicite:2]{index=2}.
+
+Su estructura puede clasificarse como:
+
+> **Premium Estandarizado Globalmente**
+
+Este posicionamiento implica:
+
+- Altas barreras de entrada (marca + escala + digitalización).
+- Rivalidad competitiva elevada pero segmentada.
+- Poder de negociación medio-alto frente a proveedores debido a volumen.
+
+#### **2.5.3. Implicancias para el Modelado Econométrico**
+
+La arquitectura estructural descrita tiene consecuencias directas sobre la dinámica estocástica observada en la serie temporal:
+
+1. La empresa presenta resiliencia de mediano plazo, lo que favorece procesos con reversión parcial tras shocks extremos.
+2. Los eventos reputacionales o de gestión generan impactos abruptos debido a la sensibilidad del mercado hacia activos con fuerte componente intangible.
+3. La estacionalidad mensual detectada (21 días hábiles) puede asociarse a ciclos institucionales de rebalanceo y comportamiento de fondos que ponderan activos Large Cap defensivos dentro del consumo discrecional.
+
+En consecuencia, la inclusión de:
+
+- Variables de intervención tipo *Pulse* y *Step*,
+- Componentes estacionales,
+- Y dummies asociadas a cambios estructurales,
+
+no solo responde a un criterio estadístico, sino a fundamentos microeconómicos coherentes con la posición competitiva de la firma.
+
+Esta integración fortalece la consistencia entre la teoría económica industrial y la especificación formal del modelo SARIMAX desarrollado en la Sección 4.
+___
+
+## **3. Marco Teórico y Metodológico**
 
 El desarrollo de este estudio sigue un flujo de trabajo cuantitativo riguroso, estructurado en etapas de preprocesamiento, identificación, estimación y evaluación. A continuación, se detallan los fundamentos estadísticos aplicados a la serie de Starbucks (SBUX).
 
@@ -336,6 +417,7 @@ Regresando a las predicciones clásicas para el modelo SARIMAX ajustado obtenemo
 ### **6.1. Anexos y Recursos Computacionales**
 Para garantizar la total transparencia y la reproducibilidad de los resultados estocásticos presentados en esta investigación, se adjuntan los siguientes recursos y *scripts* en el repositorio oficial del proyecto:
 
+* **Ficha Corporativa:** Archivo que contiene la descripción y características actuales de la empresa: [anexos/anexo_sbux.md](anexos/anexo_sbux.md).
 * **Base de Datos Dinámica:** Archivo de eventos tabulados y matriz de variables exógenas: [`data/external/news_history.csv`](../data/external/news_history.csv).
 * **Eventos de Impacto:** Archivo de eventos documentados: [`reports/anexos/anexo_eventos.md`](anexos/anexo_eventos.md).
 * **Diccionario de Dummies (Shocks o Noticias):** Archivo en donde se definen la clasificación de dummies respectivas al ``anexo_eventos``: [`reports/anexos/anexo_dummies.md`](anexos/anexo_dummies.md).
