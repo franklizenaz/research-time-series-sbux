@@ -65,17 +65,18 @@ El proyecto está diseñado para ser 100% reproducible. Se proponen 7 *notebooks
 │   ├── raw/         
 │   └── transformed/        
 ├── notebooks/
-│   ├── 00_sbux_history_timelines.ipynb                 # Contexto y Radar Exógeno
-│   ├── 01_data_acquisition_cleaning.ipynb              # API y Forward-Fill Imputation
-│   ├── 02_eda_and_news_analysis.ipynb                  # Detección de anomalías de volumen
-│   ├── 03_stationarity_and_prep.ipynb                  # Análisis ADF de Precios (Niveles)
-│   ├── 03.1_stationarity_and_prep.ipynb                # Análisis ADF de Retornos Logarítmicos
-│   ├── 04_adjustment_forecasting_and_validation.ipynb  # Multi-step clásico (Demostración de fallo)
-│   ├── 04.1_adjustment_forecasting_and_validation.ipynb # Walk-Forward Validation optimizado
+│   ├── 00_sbux_history_timelines.ipynb                     # Contexto y Radar Exógeno
+│   ├── 01_data_acquisition_cleaning.ipynb                  # API y Forward-Fill Imputation
+│   ├── 02_eda_and_news_analysis.ipynb                      # Detección de anomalías de volumen
+│   ├── 03_stationarity_and_prep.ipynb                      # Análisis ADF de Precios (Niveles)
+│   ├── 03.1_stationarity_and_prep.ipynb                    # Análisis ADF de Retornos Logarítmicos
+│   ├── 04_adjustment_forecasting_and_validation.ipynb      # Multi-step clásico (Demostración de fallo)
+│   ├── 04.1_adjustment_forecasting_and_validation.ipynb    # Walk-Forward Validation optimizado
 ├── results/
-│   └── figures/           # Gráficos exportados
+│   └── figures/                                            # Gráficos exportados
 ├── reports/
-│   └── report_main.md     # Informe técnico completo
-└── README.md              # Este documento
+│   ├── forecasting-analysis-sbux.pdf                       # Presentación Previa al Informe          
+│   └── report_main.md                                      # Informe técnico completo
+└── README.md                                               # Este documento
 
 ```
