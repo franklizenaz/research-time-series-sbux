@@ -63,10 +63,12 @@ Para lograr esto, se emplea la metodología **SARIMAX** (Seasonal AutoRegressive
 ---
 
 ## **2. Marco Institucional y Corporativo: Starbucks Corporation**
-
+> Extracto: [00_sbux_history_timelines.ipynb](../notebooks/00_sbux_history_timelines.ipynb)
+> 
 El análisis estocástico de un activo financiero carece de validez si se aísla de su realidad corporativa. La cotización de Starbucks Corporation (Ticker: SBUX) no es solo el resultado de la oferta y la demanda algorítmica, sino el reflejo de su evolución histórica, la estabilidad de su cúpula directiva y su capacidad para mitigar riesgos sistémicos. 
 
 ### **2.1. Identidad Corporativa y Modelo de Negocio**
+
 Starbucks no es únicamente un distribuidor de café; es el principal tostador y minorista de cafés de especialidad a nivel global. Su modelo de negocio se sostiene sobre el concepto sociológico del **"Tercer Lugar"** (Third Place): un espacio de transición cálido, seguro y acogedor entre el hogar y el lugar de trabajo. 
 
 Desde la perspectiva de la ingeniería económica, la empresa genera valor al transformar un *commodity* altamente volátil (el grano de café Arábica) en una experiencia *premium*. Esta estrategia de diferenciación le otorga poder de fijación de precios (Pricing Power) y fidelización, respaldada por un ecosistema digital masivo (Starbucks Rewards) que funciona, en la práctica, como un motor de liquidez anticipada a través de las recargas de saldos de sus clientes.
@@ -113,12 +115,14 @@ Si bien cualitativamente la empresa enfrenta múltiples frentes de riesgo (desde
 El desarrollo de este estudio sigue un flujo de trabajo cuantitativo riguroso, estructurado en etapas de preprocesamiento, identificación, estimación y evaluación. A continuación, se detallan los fundamentos estadísticos aplicados a la serie de Starbucks (SBUX).
 
 ### **3.1. Adquisición, Preprocesamiento y Estadística Descriptiva**
+
 La serie endógena $y_t$ representa el precio de Cierre Ajustado (*Adj Close*) de SBUX. Dado que los mercados financieros no operan fines de semana ni feriados, la serie original presenta brechas temporales (valores nulos). 
 * **Imputación por Forward Fill:** Para mantener la continuidad estricta del tiempo sin inventar datos futuros, se aplicó una imputación de último valor acarreado. Matemáticamente:
   $$y_t = y_{t-1} \quad \text{si } y_t \text{ es nulo}$$
 * **Análisis Descriptivo:** Antes de modelar, se calcularon los momentos estadísticos fundamentales de la distribución de precios: la media ($\mu$), varianza ($\sigma^2$), asimetría (Skewness) y curtosis. En finanzas, una alta curtosis (distribución leptocúrtica) indica una mayor probabilidad de eventos extremos ("colas gordas"), lo cual justifica la inclusión de variables cualitativas (noticias) para explicar dichos picos.
 
 ### **3.2. Descomposición Clásica de la Serie de Tiempo**
+> 
 Para aislar la señal del ruido, la serie empírica fue separada en sus tres componentes inobservables mediante un modelo aditivo (asumiendo que la varianza de la estacionalidad no crece exponencialmente con la tendencia). La ecuación de descomposición se define como:
 $$y_t = T_t + S_t + R_t$$
 Donde:
@@ -127,6 +131,8 @@ Donde:
 * $R_t$: **Ruido/Residuo (Residual)**, la variación aleatoria no explicada por el modelo.
 
 ### **3.3. Estacionariedad y Pruebas de Raíz Unitaria**
+> Extractos: [03_stationarity_and_prep.ipynb](../notebooks/03_stationarity_and_prep.ipynb) & [03.1_stationarity_and_prep.ipynb](../notebooks/03.1_stationarity_and_prep.ipynb)
+
 Un requisito insoslayable para los modelos autorregresivos es que la serie sea **estacionaria**; es decir, que su media y varianza sean constantes en el tiempo y no dependan del momento $t$ en que se observan.
 Para comprobar empíricamente la presencia de una tendencia estocástica, se empleó la **Prueba de Dickey-Fuller Aumentada (ADF)**, cuya regresión subyacente es:
 $$\Delta y_t = \alpha + \beta t + \gamma y_{t-1} + \sum_{i=1}^{p} \delta_i \Delta y_{t-i} + \epsilon_t$$
@@ -139,11 +145,13 @@ Del mismo modo, al detectar patrones estacionales, se aplicó una **Diferencia E
 $$\nabla_s y_t = y_t - y_{t-s}$$
 
 ### **3.4. Identificación del Modelo: Funciones de Autocorrelación (ACF y PACF)**
+
 Con la serie estacionaria, se identificaron los hiperparámetros del modelo (rezagos) analizando los correlogramas.
 1. **ACF (Autocorrelation Function):** Mide la correlación lineal de Pearson entre la serie y sus propios valores pasados $y_{t-k}$. Los cortes abruptos en el ACF determinan el componente de Media Móvil ($q$ y $Q$).
 2. **PACF (Partial Autocorrelation Function):** Mide la correlación entre $y_t$ y $y_{t-k}$ eliminando el efecto de los rezagos intermedios. Sus cortes determinan el componente Autorregresivo ($p$ y $P$).
 
 ### **3.5. Estimación del Modelo SARIMAX**
+
 Integrando los componentes anteriores y añadiendo la matriz de características macroeconómicas e intervenciones ($X_t$), el modelo de clase **SARIMAX $(p,d,q) \times (P,D,Q)_s$** se define matemáticamente mediante el operador de rezago $L$ ($L^k y_t = y_{t-k}$):
 
 $$\phi_p(L) \Phi_P(L^s) (1-L)^d (1-L^s)^D y_t = \beta X_t + \theta_q(L) \Theta_Q(L^s) \epsilon_t$$
@@ -167,10 +175,13 @@ El modelo óptimo seleccionado fue aquel que, tras pasar las pruebas de normalid
 ---
 
 ## **4. Resultados Empíricos y Desarrollo del Análisis Estocástico**
-
+> Extracto: [01_data_acquisition_cleaning.ipynb](../notebooks/01_data_acquisition_cleaning.ipynb)
+> 
 En esta sección veremos los resultados obtenidos tras la aplicación secuencial del pipeline de modelado de series temporales sobre la cotización de Starbucks Corporation (SBUX). El análisis abarca desde el tratamiento de la microestructura de los datos (volumen) hasta la evaluación paramétrica y simulación predictiva *Walk-Forward*, evaluando rigurosamente el impacto de los factores exógenos.
 
 ### **4.1. Configuración de la Muestra y Detección de Anomalías (EDA)**
+> Extracto: [02_eda_and_news_analysis.ipynb](../notebooks/02_eda_and_news_analysis.ipynb)
+
 La base de datos analizada comprende el periodo del **15 de marzo de 2021 al 13 de febrero de 2026**, totalizando un vector de 1,225 observaciones bursátiles diarias. 
 
 Dado que la serie de tiempo financiera presenta interrupciones naturales (fines de semana y feriados bursátiles), se aplicó una técnica de **Imputación Forward Fill (Último Valor Observado)**. Esta decisión metodológica garantiza la equidistancia temporal estricta requerida por los modelos autorregresivos, mitigando el riesgo de "fuga de datos" (Data Leakage) inherente a las interpolaciones lineales retrospectivas.
@@ -183,6 +194,8 @@ Dado que la serie de tiempo financiera presenta interrupciones naturales (fines 
 > 💡 **Interpretación:** La concentración de estas anomalías coincide cronológicamente con periodos de alta tensión para la firma (e.g., el ingreso de fondos activistas como Elliott Management y la transición de CEOs). Esto demuestra empíricamente que la acción de SBUX no fluctúa por mero "ruido estocástico", sino por reasignaciones masivas de capital institucional ante noticias clave.
 > 
 ### **4.2. Análisis de Raíz Unitaria y la Transformación Dual**
+> Extractos: [03_stationarity_and_prep.ipynb](../notebooks/03_stationarity_and_prep.ipynb) & [03.1_stationarity_and_prep.ipynb](../notebooks/03.1_stationarity_and_prep.ipynb)
+
 La convergencia matemática de cualquier modelo de la familia ARIMA exige la **estacionariedad** del proceso generador de datos. Para evaluarla, se ejecutó la Prueba de Dickey-Fuller Aumentada (ADF) contrastando dos enfoques analíticos:
 
 **A. Análisis en Niveles (Precio Absoluto - `Adj Close`):**
@@ -195,7 +208,6 @@ La serie en dólares corrientes demostró comportarse como una Caminata Aleatori
 **B. Análisis en Retornos Logarítmicos (Log-Returns):**
 Para estabilizar la varianza estructural y alinear el estudio con los axiomas de la econometría financiera, se transformó la serie a retornos logarítmicos compuestos continuamente:
 $$R_t = \ln\left(\frac{P_t}{P_{t-1}}\right) = \ln(P_t) - \ln(P_{t-1})$$
-
 
 ![Retornos Logarítmicos Estacionarios](../results/figures/03.1_log_returns.png)
 
@@ -218,6 +230,8 @@ Dado el ``Efecto Estacional ``, procederemos entonces a hacer una **diferenciaci
 
 
 ### **4.3. Identificación Estructural: Correlogramas**
+> Extractos: [03_stationarity_and_prep.ipynb](../notebooks/03_stationarity_and_prep.ipynb) & [03.1_stationarity_and_prep.ipynb](../notebooks/03.1_stationarity_and_prep.ipynb)
+
 Con la serie $R_t$ estacionaria, se procedió a la identificación visual de los hiperparámetros iniciales evaluando la Función de Autocorrelación (ACF) y Autocorrelación Parcial (PACF).
 
 ![Correlogramas ACF y PACF](../results/figures/03.acf_pacf.png)
@@ -234,6 +248,8 @@ Con la serie $R_t$ estacionaria, se procedió a la identificación visual de los
 
 
 ### **4.4. Optimización Paramétrica y Selección de Características (Feature Selection)**
+> Extractos: [04_adjustment_forecasting_and_validation.ipynb](../notebooks/04_adjustment,%20forecasting,%20and%20validation.ipynb) & [04.1_adjustment_forecasting_and_validation.ipynb](../notebooks/04.1_adjustment,%20forecasting,%20and%20validation.ipynb)
+
 Se ejecutó una optimización heurística mediante `Auto-ARIMA`, minimizando el Criterio de Información de Akaike (AIC) para penalizar la sobreparametrización. 
 
 El modelo convergente para los retornos logarítmicos fue identificado como **SARIMAX $(0, 1, 0) \times (2, 1, 0)_{21}$**. La ausencia de un componente AR ($p=0$) y MA ($q=0$) , y la presencia de un AR estacional de 2do orden junto a la tendencia indica que el mercado corrige rápidamente sus expectativas basándose en los valores estacionales anteriores, siendo de fuerte influencia los "shocks cíclicos" (Eventos o Noticias).
@@ -271,6 +287,8 @@ Para aislar los verdaderos *drivers* del retorno accionario de Starbucks, se eva
 
 > 📌 **Anotación de Optimización (Feature Selection):**  Bajo el principio de parsimonia, todas aquellas variables de la matriz inicial cuyo $P\text{-valor}$ resultó superior a 0.05 (careciendo de significancia estadística) fueron rigurosamente depuradas del modelo estocástico final para evitar (*Overfitting*), reduciendo el "ruido" de la matriz exógena e incrementando la capacidad de generalización del modelo frente a datos no vistos.
 ### **4.5. Pronóstico Tradicional (Multi-Step Forecasting) y Limitaciones Estructurales**
+> Extractos: [03_stationarity_and_prep.ipynb](../notebooks/03_stationarity_and_prep.ipynb) & [03.1_stationarity_and_prep.ipynb](../notebooks/03.1_stationarity_and_prep.ipynb)
+
 Una vez calibrado el modelo SARIMAX óptimo, el primer experimento predictivo consistió en proyectar la cotización sobre el conjunto de validación (Test Set) utilizando la metodología clásica de **Pronóstico de Múltiples Pasos (Multi-Step Forecasting)**. 
 
 Bajo este enfoque estático, el algoritmo ajustado con los datos de entrenamiento (Train) intentó predecir la totalidad de la ventana de validación en un solo cálculo continuo, apoyándose únicamente en la proyección de la matriz exógena futura.
@@ -286,6 +304,8 @@ Al observar la curva de predicción (tanto en retornos logarítmicos como en su 
 **Conclusión Metodológica:** Se dictamina que el pronóstico tradicional estático **no es una opción viable** para la toma de decisiones financieras ni para el *trading* algorítmico, ya que suprime la varianza estocástica del activo. Esta carencia de predictibilidad justifica la necesidad *imperativa* de migrar hacia una arquitectura de validación dinámica.
 
 ### **4.6. Simulación Predictiva Dinámica (Walk-Forward Validation)**
+> Extractos: [03_stationarity_and_prep.ipynb](../notebooks/03_stationarity_and_prep.ipynb) & [03.1_stationarity_and_prep.ipynb](../notebooks/03.1_stationarity_and_prep.ipynb)
+
 Para superar el colapso predictivo del método clásico y emular un entorno real de simulación algorítmica diaria, se implementó una estrategia iterativa de **Walk-Forward Validation (Validación Paso a Paso)**. 
 
 Bajo esta arquitectura de aprendizaje continuo, el algoritmo abandona la predicción estática y opera bajo la siguiente lógica estocástica:
