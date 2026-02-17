@@ -1,4 +1,4 @@
-# ANEXO B: Diccionario de Shock Externos 
+# ANEXO C: Diccionario de Shock Externos 
 **Proyecto:** Análisis Predictivo y Caracterización de Serie de Tiempo mediante Modelo SARIMA aplicado a Starbucks Corporation (SBUX)
 **Investigador:** Frankli Zeña Zeña
 **Institución:** Universidad Nacional de Ingeniería (UNI) - FIEECS

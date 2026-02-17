@@ -1,57 +1,70 @@
-# UNIVERSIDAD NACIONAL DE INGENIERÍA
-## Facultad de Ingeniería Económica, Estadística y Ciencias Sociales
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Uni-logo_transparente_granate.png" alt="Logo UNI" width="300">
+</p>
 
-**Proyecto de Investigación Científica:** Análisis Predictivo y Caracterización de Serie de Tiempo mediante Modelado Estocástico SARIMAX aplicado a Starbucks Corporation (SBUX)
+<h1 align="center">Análisis Predictivo y Caracterización de Serie de Tiempo mediante Modelado Estocástico SARIMAX aplicado a Starbucks Corporation (SBUX)</h1>
 
----
-
-### **Información del Documento**
-* **Autor:** Frankli Zeña Zeña
-* **Institución:** Universidad Nacional de Ingeniería (UNI)
-* **Fecha de Creación:** 13 de febrero de 2026
-* **Última Edición:** 16 de febrero de 2026
-* **Repositorio Asociado:** `research-time-series-sbux/`
+<h3 align="center">UNIVERSIDAD NACIONAL DE INGENIERÍA</h3>
+<h4 align="center">Facultad de Ingeniería Económica, Estadística y Ciencias Sociales</h4>
 
 ---
+
+<h3 align="center"><strong>Información del Documento</strong></h3>
+<ul>
+  <li><strong>Autor:</strong> Frankli Zeña Zeña</li>
+  <li><strong>Institución:</strong> Universidad Nacional de Ingeniería (UNI)</li>
+  <li><strong>Fecha de Creación:</strong> 13 de febrero de 2026</li>
+  <li><strong>Última Edición:</strong> 16 de febrero de 2026</li>
+  <li><strong>Repositorio Asociado:</strong> <code>research-time-series-sbux/</code></li>
+</ul>
+
+
+---
+<div style="page-break-after: always;"></div>
 
 ## **Índice**
-- [UNIVERSIDAD NACIONAL DE INGENIERÍA](#universidad-nacional-de-ingeniería)
-  - [Facultad de Ingeniería Económica, Estadística y Ciencias Sociales](#facultad-de-ingeniería-económica-estadística-y-ciencias-sociales)
-    - [**Información del Documento**](#información-del-documento)
-  - [**Índice**](#índice)
-  - [**1. Introducción y Objetivos**](#1-introducción-y-objetivos)
-  - [**2. Marco Institucional y Corporativo: Starbucks Corporation**](#2-marco-institucional-y-corporativo-starbucks-corporation)
-    - [**2.1. Identidad Corporativa y Modelo de Negocio**](#21-identidad-corporativa-y-modelo-de-negocio)
-    - [**2.2. Reseña Histórica y Crecimiento Estructural (1971-Presente)**](#22-reseña-histórica-y-crecimiento-estructural-1971-presente)
-    - [**2.3. Dinámica de Liderazgo y el "Choque Estructural" (2022-Presente)**](#23-dinámica-de-liderazgo-y-el-choque-estructural-2022-presente)
-    - [**2.4. Posicionamiento, Competencia y Matriz de Riesgos**](#24-posicionamiento-competencia-y-matriz-de-riesgos)
-    - [**2.5. Arquitectura de Generación de Valor y Posicionamiento Estratégico Estructural**](#25-arquitectura-de-generación-de-valor-y-posicionamiento-estratégico-estructural)
-      - [**2.5.1. Núcleo Económico del Negocio (Value Drivers Estructurales)**](#251-núcleo-económico-del-negocio-value-drivers-estructurales)
-      - [**2.5.2. Posicionamiento Competitivo en la Industria**](#252-posicionamiento-competitivo-en-la-industria)
-      - [**2.5.3. Implicancias para el Modelado Econométrico**](#253-implicancias-para-el-modelado-econométrico)
-  - [**3. Marco Teórico y Metodológico**](#3-marco-teórico-y-metodológico)
-    - [**3.1. Adquisición, Preprocesamiento y Estadística Descriptiva**](#31-adquisición-preprocesamiento-y-estadística-descriptiva)
-    - [**3.2. Descomposición Clásica de la Serie de Tiempo**](#32-descomposición-clásica-de-la-serie-de-tiempo)
-    - [**3.3. Estacionariedad y Pruebas de Raíz Unitaria**](#33-estacionariedad-y-pruebas-de-raíz-unitaria)
-    - [**3.4. Identificación del Modelo: Funciones de Autocorrelación (ACF y PACF)**](#34-identificación-del-modelo-funciones-de-autocorrelación-acf-y-pacf)
-    - [**3.5. Estimación del Modelo SARIMAX**](#35-estimación-del-modelo-sarimax)
-    - [**3.6. Partición de Datos y Evaluación Predictiva**](#36-partición-de-datos-y-evaluación-predictiva)
-    - [**3.7. Optimización y Selección de Hiperparámetros (Minimización del Error)**](#37-optimización-y-selección-de-hiperparámetros-minimización-del-error)
-  - [**4. Resultados Empíricos y Desarrollo del Análisis Estocástico**](#4-resultados-empíricos-y-desarrollo-del-análisis-estocástico)
-    - [**4.1. Configuración de la Muestra y Detección de Anomalías (EDA)**](#41-configuración-de-la-muestra-y-detección-de-anomalías-eda)
-    - [**4.2. Análisis de Raíz Unitaria y la Transformación Dual**](#42-análisis-de-raíz-unitaria-y-la-transformación-dual)
-    - [**4.3. Identificación Estructural: Correlogramas**](#43-identificación-estructural-correlogramas)
-    - [**4.4. Optimización Paramétrica y Selección de Características (Feature Selection)**](#44-optimización-paramétrica-y-selección-de-características-feature-selection)
-      - [**Inferencia sobre Variables Exógenas y Selección de Características (Feature Selection)**](#inferencia-sobre-variables-exógenas-y-selección-de-características-feature-selection)
-    - [**4.5. Pronóstico Tradicional (Multi-Step Forecasting) y Limitaciones Estructurales**](#45-pronóstico-tradicional-multi-step-forecasting-y-limitaciones-estructurales)
-    - [**4.6. Simulación Predictiva Dinámica (Walk-Forward Validation)**](#46-simulación-predictiva-dinámica-walk-forward-validation)
-    - [**4.7. Evaluación de Rendimiento y Métricas de Error Definitivas**](#47-evaluación-de-rendimiento-y-métricas-de-error-definitivas)
-  - [**5. Conclusiones y Recomendaciones**](#5-conclusiones-y-recomendaciones)
-  - [**6. Anexos y Referencias**](#6-anexos-y-referencias)
-    - [**6.1. Anexos y Recursos Computacionales**](#61-anexos-y-recursos-computacionales)
-    - [**6.2. Referencias Bibliográficas**](#62-referencias-bibliográficas)
+- [**Índice**](#índice)
+- [**1. Introducción y Objetivos**](#1-introducción-y-objetivos)
+- [**2. Marco Institucional y Corporativo: Starbucks Corporation**](#2-marco-institucional-y-corporativo-starbucks-corporation)
+  - [**2.1. Identidad Corporativa y Modelo de Negocio**](#21-identidad-corporativa-y-modelo-de-negocio)
+  - [**2.2. Reseña Histórica y Crecimiento Estructural (1971-Presente)**](#22-reseña-histórica-y-crecimiento-estructural-1971-presente)
+  - [**2.3. Dinámica de Liderazgo y el "Choque Estructural" (2022-Presente)**](#23-dinámica-de-liderazgo-y-el-choque-estructural-2022-presente)
+  - [**2.4. Posicionamiento, Competencia y Matriz de Riesgos**](#24-posicionamiento-competencia-y-matriz-de-riesgos)
+  - [**2.5. Arquitectura de Generación de Valor y Posicionamiento Estratégico Estructural**](#25-arquitectura-de-generación-de-valor-y-posicionamiento-estratégico-estructural)
+    - [**2.5.1. Núcleo Económico del Negocio (Value Drivers Estructurales)**](#251-núcleo-económico-del-negocio-value-drivers-estructurales)
+    - [**2.5.2. Posicionamiento Competitivo en la Industria**](#252-posicionamiento-competitivo-en-la-industria)
+    - [**2.5.3. Implicancias para el Modelado Econométrico**](#253-implicancias-para-el-modelado-econométrico)
+- [**3. Marco Teórico y Metodológico**](#3-marco-teórico-y-metodológico)
+  - [**3.1. Adquisición, Preprocesamiento y Estadística Descriptiva**](#31-adquisición-preprocesamiento-y-estadística-descriptiva)
+  - [**3.2. Descomposición Clásica de la Serie de Tiempo**](#32-descomposición-clásica-de-la-serie-de-tiempo)
+  - [**3.3. Estacionariedad y Pruebas de Raíz Unitaria**](#33-estacionariedad-y-pruebas-de-raíz-unitaria)
+  - [**3.4. Identificación del Modelo: Funciones de Autocorrelación (ACF y PACF)**](#34-identificación-del-modelo-funciones-de-autocorrelación-acf-y-pacf)
+  - [**3.5. Estimación del Modelo SARIMAX**](#35-estimación-del-modelo-sarimax)
+  - [**3.6. Partición de Datos y Evaluación Predictiva**](#36-partición-de-datos-y-evaluación-predictiva)
+  - [**3.7. Optimización y Selección de Hiperparámetros (Minimización del Error)**](#37-optimización-y-selección-de-hiperparámetros-minimización-del-error)
+- [**4. Resultados Empíricos y Desarrollo del Análisis Estocástico**](#4-resultados-empíricos-y-desarrollo-del-análisis-estocástico)
+  - [**4.1. Configuración de la Muestra y Detección de Anomalías (EDA)**](#41-configuración-de-la-muestra-y-detección-de-anomalías-eda)
+      - [Ingresos (Revenue)](#ingresos-revenue)
+      - [Utilidad Operativa (Operating Income)](#utilidad-operativa-operating-income)
+      - [Utilidad Neta (Net Income)](#utilidad-neta-net-income)
+      - [Resumen por etapas](#resumen-por-etapas)
+  - [**4.2. Análisis Exploratorio y Estacionariedad**](#42-análisis-exploratorio-y-estacionariedad)
+    - [4.2.1. Estadísticas Descriptivas de la Serie Original](#421-estadísticas-descriptivas-de-la-serie-original)
+    - [4.2.2. Análisis de Raíz Unitaria y la Transformación Dual](#422-análisis-de-raíz-unitaria-y-la-transformación-dual)
+  - [**4.3. Identificación Estructural: Correlogramas**](#43-identificación-estructural-correlogramas)
+  - [**4.4. Optimización Paramétrica y Selección de Características (Feature Selection)**](#44-optimización-paramétrica-y-selección-de-características-feature-selection)
+    - [**Inferencia sobre Variables Exógenas y Selección de Características (Feature Selection)**](#inferencia-sobre-variables-exógenas-y-selección-de-características-feature-selection)
+    - [Modelo SARIMAX Final: Estimación e Inferencia](#modelo-sarimax-final-estimación-e-inferencia)
+  - [**4.5. Pronóstico Tradicional (Multi-Step Forecasting) y Limitaciones Estructurales**](#45-pronóstico-tradicional-multi-step-forecasting-y-limitaciones-estructurales)
+  - [**4.6. Simulación Predictiva Dinámica (Walk-Forward Validation)**](#46-simulación-predictiva-dinámica-walk-forward-validation)
+  - [**4.7. Evaluación de Rendimiento y Métricas de Error Definitivas**](#47-evaluación-de-rendimiento-y-métricas-de-error-definitivas)
+- [**5. Conclusiones y Recomendaciones**](#5-conclusiones-y-recomendaciones)
+- [**6. Anexos y Referencias**](#6-anexos-y-referencias)
+  - [**6.1. Anexos y Recursos Computacionales**](#61-anexos-y-recursos-computacionales)
+  - [**6.2. Referencias Bibliográficas**](#62-referencias-bibliográficas)
 
 ---
+<div style="page-break-after: always;"></div>
 
 ## **1. Introducción y Objetivos**
 El presente informe técnico desarrolla un estudio estadístico temporal (econométrico) exhaustivo sobre la serie de precios y retornos de **Starbucks Corporation (Ticker: SBUX)**. En el ámbito de la Ingeniería, la comprensión de la dinámica de los activos financieros exige ir más allá del análisis técnico tradicional; requiere la integración de la salud financiera de la empresa y el impacto psicológico de los shocks externos (noticias, cambios de directiva, crisis geopolíticas).
@@ -67,10 +80,18 @@ Para lograr esto, se emplea la metodología **SARIMAX** (Seasonal AutoRegressive
 
 ---
 
+<div style="page-break-after: always;"></div>
+
 ## **2. Marco Institucional y Corporativo: Starbucks Corporation**
 > Extracto: [00_sbux_history_timelines.ipynb](../notebooks/00_sbux_history_timelines.ipynb)
 > 
 El análisis estocástico de un activo financiero carece de validez si se aísla de su realidad corporativa. La cotización de Starbucks Corporation (Ticker: SBUX) no es solo el resultado de la oferta y la demanda algorítmica, sino el reflejo de su evolución histórica, la estabilidad de su cúpula directiva y su capacidad para mitigar riesgos sistémicos. 
+
+---
+
+![Presentación](https://gestion.pe/resizer/v2/C4BRZ7GUAZF2FB3ZTCNIH7TQKY.jpg?auth=ad5e0f7b36ada3771de84d94ac4d92c6e6468ae33ee662a61166ba370e49f5fe&width=1200&height=675&quality=75&smart=true)
+
+---
 
 ### **2.1. Identidad Corporativa y Modelo de Negocio**
 
@@ -191,6 +212,8 @@ no solo responde a un criterio estadístico, sino a fundamentos microeconómicos
 Esta integración fortalece la consistencia entre la teoría económica industrial y la especificación formal del modelo SARIMAX desarrollado en la Sección 4.
 ___
 
+<div style="page-break-after: always;"></div>
+
 ## **3. Marco Teórico y Metodológico**
 
 El desarrollo de este estudio sigue un flujo de trabajo cuantitativo riguroso, estructurado en etapas de preprocesamiento, identificación, estimación y evaluación. A continuación, se detallan los fundamentos estadísticos aplicados a la serie de Starbucks (SBUX).
@@ -255,10 +278,14 @@ El modelo óptimo seleccionado fue aquel que, tras pasar las pruebas de normalid
 
 ---
 
+<div style="page-break-after: always;"></div>
+
 ## **4. Resultados Empíricos y Desarrollo del Análisis Estocástico**
 > Extracto: [01_data_acquisition_cleaning.ipynb](../notebooks/01_data_acquisition_cleaning.ipynb)
 > 
 En esta sección veremos los resultados obtenidos tras la aplicación secuencial del pipeline de modelado de series temporales sobre la cotización de Starbucks Corporation (SBUX). El análisis abarca desde el tratamiento de la microestructura de los datos (volumen) hasta la evaluación paramétrica y simulación predictiva *Walk-Forward*, evaluando rigurosamente el impacto de los factores exógenos.
+
+![Evolución de la Serie Original](../results/figures/01_history_evolution.png)
 
 ### **4.1. Configuración de la Muestra y Detección de Anomalías (EDA)**
 > Extracto: [02_eda_and_news_analysis.ipynb](../notebooks/02_eda_and_news_analysis.ipynb)
@@ -270,12 +297,163 @@ Dado que la serie de tiempo financiera presenta interrupciones naturales (fines 
 **Análisis de la Microestructura de Volumen:**
  Mediante el contraste del volumen diario contra una Media Móvil Simple de 20 periodos, el algoritmo detectó **43 anomalías estadísticas de volumen**. 
 
+ 
+ | Date       | # Adj Close          | # Volume   | # Vol_Avg_20 | # Vol_Anomaly | # Log_Return                 |
+|:-----------|:---------------------|:-----------|:-------------|:--------------|:-----------------------------|
+| 2021-03-15 | 97.09121704101562    | 7107300    | 6295740.0    | False         | 0.010059511459584404         |
+| 2021-03-16 | 99.26663208007812    | 11376200   | 6618145.0    | False         | 0.02215856467326595          |
+| 2021-03-17 | 98.4820556640625     | 10128400   | 6837875.0    | False         | -0.007935127578150918        |
+| 2021-03-18 | 95.95001983642578    | 7813400    | 7023610.0    | False         | -0.02604692639181637         |
+| 2021-03-19 | 94.80880737304688    | 21452000   | 7889765.0    | True          | -0.011965119466228448        |
+| ...        | ...                  | ...        | ...          | ...           | ...                           |
+
+`La tabla completa contiene 1237 registros`
+
 ![Detección de Anomalías de Volumen](../results/figures/02_volumen_anomalias.png)
 
 > 💡 **Interpretación:** La concentración de estas anomalías coincide cronológicamente con periodos de alta tensión para la firma (e.g., el ingreso de fondos activistas como Elliott Management y la transición de CEOs). Esto demuestra empíricamente que la acción de SBUX no fluctúa por mero "ruido estocástico", sino por reasignaciones masivas de capital institucional ante noticias clave.
+
+Tras la identificación de las anomalías en la serie, se realizó una búsqueda exhaustiva de eventos históricos ocurridos en las fechas correspondientes a dichos valores atípicos. Esta investigación permitió contextualizar los shocks y su posible impacto en el mercado. Todos los eventos identificados y sus descripciones detalladas se encuentran documentados en:  [`anexos/anexo_eventos.md`](anexos/anexo_eventos.md).
+
+**Análisis Financiero Complementario:**
+
+Para complementar el análisis de anomalías y eventos en la serie financiera, se realizó una extracción y evaluación de los principales estados financieros trimestrales de la empresa. Este análisis permite entender la evolución subyacente del negocio y su impacto potencial en el comportamiento de la serie temporal estudiada.
+
+El paquete `stockdex` proporciona herramientas para la extraccion de estados financieros de ``Macrotrends`` (Página que alberga los estados financieros de trimestral y anual de empresas en bolsa, similar a Yahoo Finance); sin embargo, para el desarrollo del modelo se priorizan los indicadores que más influyen en la acción:
+
+- **Revenue (Ventas Totales):** Indica el volumen de ventas de la empresa.
+- **Operating Income (Ingreso Operativo):** Representa la utilidad tras costos directos.
+- **Margen Operativo:** Nueva característica que refleja la eficiencia operativa en cada periodo.
+
+| Fecha       | Revenue | Operating Income | Net Income |
+|-------------|---------|------------------|------------|
+| 2025-12-31  | 9915.1  | 890.8            | 293.3      |
+| 2025-09-30  | 9569.0  | 278.3            | 133.1      |
+| 2025-06-30  | 9456.0  | 935.6            | 558.3      |
+| 2025-03-31  | 8761.6  | 601.0            | 384.2      |
+| 2024-12-31  | 9397.8  | 1121.7           | 780.8      |
+| ...         | ...     | ...              | ...        |
+
+`Se recogieron los Estados Financieros de todos los trimestres completos de los años 2020 al 2025`
+##### Ingresos (Revenue)
+
+- **Tendencia general:** crecimiento estructural.
+- En 2020, fuerte impacto en el segundo trimestre con caída notable a aproximadamente 4,222 millones, atribuible a la pandemia.
+- Entre 2021 y 2023, se observa una recuperación sólida y crecimiento sostenido.
+- En 2024 y 2025, los ingresos se estabilizan alrededor de 9,000 a 9,900 millones por trimestre.
+- En resumen, se pasa de niveles de 6,000–7,000 millones trimestrales a niveles cercanos a 9,500–10,000, evidenciando un crecimiento claro post-COVID y una estabilización reciente.
+
+##### Utilidad Operativa (Operating Income)
+
+- Mayor volatilidad respecto a los ingresos.
+- Pérdida operativa destacada en el segundo trimestre de 2020 (-703 millones).
+- Fuerte recuperación en 2021–2023 con picos entre 1,500 y 1,700 millones.
+- En 2025 se observa una ligera desaceleración comparado con los máximos recientes.
+- El margen operativo mejora significativamente tras la pandemia, aunque se detecta compresión en 2025.
+
+##### Utilidad Neta (Net Income)
+
+- Impacto severo en 2020, incluyendo utilidad negativa en el segundo trimestre.
+- Recuperación sólida entre 2021 y 2023, con trimestres superando 1,100–1,200 millones.
+- En 2024–2025, mantiene resultados positivos pero con mayor variabilidad.
+- La empresa vuelve a niveles sólidos de rentabilidad, aunque 2025 no alcanza los picos de 2023.
+
+##### Resumen por etapas
+
+- **2020 – Impacto COVID:** fuerte caída en ingresos, pérdidas operativas y alta volatilidad.
+- **2021–2023 – Recuperación y expansión:** crecimiento constante, mejora de márgenes y utilidades en máximos históricos.
+- **2024–2025 – Estabilización:** ingresos elevados pero crecimiento más lento, márgenes presionados y rentabilidad estable.
+
+> ##### Conclusión general
 > 
-### **4.2. Análisis de Raíz Unitaria y la Transformación Dual**
+> Durante los últimos cinco años, Starbucks muestra una recuperación exitosa post-pandemia, con crecimiento estructural en ingresos y rentabilidad sólida. Sin embargo, se observan señales recientes de desaceleración en márgenes, lo que podría anticipar un ajuste en la dinámica financiera futura.
+
+**Introducción y cálculo del Margen Operativo:**
+
+Para profundizar en la eficiencia operativa, se introduce la característica financiera **Margen Operativo**, definida como la proporción del ingreso operativo respecto a los ingresos totales:
+
+\[
+\text{Margen Operativo} = \frac{\text{Operating Income}}{\text{Revenue}}
+\]
+
+Expresado en porcentaje:
+
+\[
+\text{Margen Operativo (\%)} = \text{Margen Operativo} \times 100
+\]
+
+Esta métrica es crucial porque indica qué porcentaje de las ventas queda como beneficio operativo después de cubrir costos directos, reflejando la eficiencia en la gestión operativa y el impacto sobre la rentabilidad.
+| Fecha      | Revenue | Operating Income | Net Income | Margen Operativo | Margen Operativo (%) |
+|:-----------|--------:|-----------------:|-----------:|-----------------:|---------------------:|
+| 2020-03-31 | 5995.7  | 487.4004         | 328.4      | 0.0813           | 8.13%                |
+| 2020-06-30 | 4222.1  | -703.8999        | -678.4     | -0.1667          | -16.67%              |
+| 2020-09-30 | 6203.1  | 558.3989         | 392.6      | 0.0900           | 9.00%                |
+| 2020-12-31 | 6749.4  | 913.4995         | 622.2      | 0.1353           | 13.53%               |
+| 2021-03-31 | 6668.0  | 987.6001         | 659.4      | 0.1481           | 14.81%               |
+| ...        | ...     | ...              | ...        | ...              | ...                  |
+
+Este análisis financiero inicial fundamenta la selección de variables para modelar la serie, contribuyendo a mejorar la precisión y la interpretación del modelo.
+
+**División de Datos: Entrenamiento y Validación**
+
+Para asegurar la robustez del modelo SARIMAX y evaluar su capacidad de generalización, la serie temporal ajustada (`Adj Close`) y la matriz de variables exógenas fueron divididas en dos subconjuntos:
+
+1. **Datos de Entrenamiento:**  
+   - Comprenden aproximadamente el 80% de la serie histórica disponible.  
+   - Incluyen los primeros 980 registros (de un total de 1225 observaciones).  
+   - Este conjunto se utilizó para estimar los parámetros del modelo, ajustar los coeficientes ARIMA/SARIMA y evaluar la significancia de las variables exógenas.  
+
+2. **Datos de Validación:**  
+   - Comprenden el 20% restante de la serie (245 registros).  
+   - Se emplean para evaluar el desempeño predictivo del modelo sobre datos no vistos durante el ajuste.  
+   - Permite calcular métricas de error como MSE, RMSE, MAE y MAPE, así como verificar la capacidad de generalización del modelo ante shocks no incluidos en el entrenamiento.  
+
+> **Justificación metodológica:**  
+> La separación temporal es fundamental en modelos de series de tiempo, dado que los datos diarios de mercado presentan alta autocorrelación y posibles estructuras estacionales. Entrenar el modelo sobre la totalidad de la serie puede generar **sobreajuste**, donde el modelo "memoriza" patrones históricos pero falla en predecir eventos futuros.  
+>
+> Al utilizar un conjunto de validación separado, se obtiene una estimación objetiva de la precisión y confiabilidad de las predicciones, permitiendo ajustar la complejidad del modelo y la selección de variables exógenas antes de cualquier implementación práctica.  
+
+**Visualización esquemática:**
+
+| Conjunto           | Observaciones | Porcentaje | Uso principal |
+|-------------------|---------------|------------|---------------|
+| Entrenamiento      | 980           | 80%        | Ajuste de parámetros, estimación de coeficientes y pruebas de significancia. |
+| Validación         | 245           | 20%        | Evaluación predictiva y cálculo de métricas de desempeño. |
+
+
+---
+
+### **4.2. Análisis Exploratorio y Estacionariedad**
 > Extractos: [03_stationarity_and_prep.ipynb](../notebooks/03_stationarity_and_prep.ipynb) & [03.1_stationarity_and_prep.ipynb](../notebooks/03.1_stationarity_and_prep.ipynb)
+
+#### 4.2.1. Estadísticas Descriptivas de la Serie Original
+
+Antes de analizar los modelos y transformaciones en la sección 4.2, es útil examinar las **estadísticas descriptivas de la serie original de precios y los retornos logarítmicos**.
+
+- La serie de precios muestra variabilidad inherente a los movimientos del mercado, reflejando cambios diarios y posibles picos por eventos específicos.
+- Los **retornos logarítmicos** presentan las siguientes métricas clave:
+
+| Métrica | Valor |
+|---------|-------|
+| Conteo (count) | 1237 |
+| Media (mean) | -0.000020 |
+| Desviación estándar (std) | 0.019517 |
+| Mínimo (min) | -0.172896 |
+| Percentil 25 (25%) | -0.009325 |
+| Mediana (50%) | -0.000086 |
+| Percentil 75 (75%) | 0.009154 |
+| Máximo (max) | 0.219111 |
+
+![Distribución de los Retirnos Logarítmicos de los Precio de Cierre Ajustados](../results/figures/02_normal_distribution_log_returns.png)
+
+- La media cercana a cero indica que **no hay tendencia significativa** en los retornos diarios.
+- La **desviación estándar** muestra que la volatilidad diaria promedio es aproximadamente 1.95%.
+- La **curtosis** elevada sugiere la presencia de valores extremos o shocks de mercado, típicos en series financieras.
+- Dado que los retornos logarítmicos siguen una **distribución aproximadamente normal**, es razonable aplicar métodos estadísticos paramétricos para análisis posteriores, como pruebas de hipótesis o modelos de regresión.
+
+> Esta evaluación proporciona un marco de referencia antes de aplicar las transformaciones o modelizaciones descritas en la sección 4.2.2.
+
+#### 4.2.2. Análisis de Raíz Unitaria y la Transformación Dual
 
 La convergencia matemática de cualquier modelo de la familia ARIMA exige la **estacionariedad** del proceso generador de datos. Para evaluarla, se ejecutó la Prueba de Dickey-Fuller Aumentada (ADF) contrastando dos enfoques analíticos:
 
@@ -333,6 +511,62 @@ Con la serie $R_t$ estacionaria, se procedió a la identificación visual de los
 
 Se ejecutó una optimización heurística mediante `Auto-ARIMA`, minimizando el Criterio de Información de Akaike (AIC) para penalizar la sobreparametrización. 
 
+
+**Resumen del proceso de búsqueda:**
+
+| Modelo SARIMA                            | AIC       | Tiempo (segundos) |
+|----------------------------------------|-----------|-------------------|
+| ARIMA(0,1,0)(0,1,0)[21]                | 4258.460  | 2.22              |
+| ARIMA(1,1,0)(1,1,0)[21]                | 3946.997  | 25.81             |
+| ARIMA(1,1,0)(2,1,0)[21]                | 3835.180  | 62.83             |
+| ARIMA(0,1,0)(2,1,0)[21]                | **3833.691**  | 45.97             |
+| ARIMA(0,1,0)(2,1,0)[21] intercept      | 3836.394  | 53.47             |
+| ...                                    | ...       | ...               |
+
+El mejor modelo seleccionado fue **SARIMAX(0,1,0)(2,1,0)[21]**, con un AIC de 3833.691 y un tiempo total de ajuste de aproximadamente 507 segundos.
+
+---
+
+**Resultados del Modelo SARIMAX(0,1,0)(2,1,0)[21] con Variables Exógenas**
+
+| Parámetro           | Coeficiente | Error Estándar | Valor z | p-valor | Intervalo 95%                 |
+|---------------------|-------------|----------------|---------|---------|------------------------------|
+| Margen_Operativo_%   | 0.2487      | 0.345          | 0.721   | 0.471   | [-0.427, 0.925]              |
+| Revenue             | -0.0012     | 0.002          | -0.658  | 0.511   | [-0.005, 0.002]              |
+| choque_estructural   | 4.5722      | 2.201          | 2.077   | 0.038   | [0.257, 8.887]               |
+| shock_extremo        | -3.8379     | 0.332          | -11.544 | 0.000   | [-4.490, -3.186]             |
+| earnings             | 0.8072      | 0.174          | 4.649   | 0.000   | [0.467, 1.148]               |
+| riesgo_pais          | 0.1129      | 0.305          | 0.370   | 0.711   | [-0.485, 0.711]              |
+| shock_costos         | -2.5529     | 0.601          | -4.247  | 0.000   | [-3.731, -1.375]             |
+| ar.S.L21             | -0.7144     | 0.022          | -32.232 | 0.000   | [-0.758, -0.671]             |
+| ar.S.L42             | -0.3419     | 0.022          | -15.276 | 0.000   | [-0.386, -0.298]             |
+| sigma2               | 3.1017      | 0.049          | 63.056  | 0.000   | [3.005, 3.198]               |
+
+---
+
+**Estadísticos de Diagnóstico**
+
+| Estadístico                  | Valor    | Interpretación                                         |
+|-----------------------------|----------|-------------------------------------------------------|
+| Ljung-Box (L1) (Q)           | 0.47     | p = 0.49, no evidencia de autocorrelación residual   |
+| Jarque-Bera (JB)              | 10556.72 | p = 0.00, distribución no normal de residuos          |
+| Heteroscedasticidad (H)       | 1.26     | p = 0.04, ligera evidencia de heteroscedasticidad     |
+| Asimetría (Skew)              | 1.12     | Residuales levemente sesgados a la derecha             |
+| Curtosis                     | 19.11    | Distribución con colas pesadas, presencia de outliers  |
+
+---
+
+> 💡 **Interpretación:** El modelo SARIMAX seleccionado incorpora una estacionalidad de orden 21 con dos términos autoregresivos estacionales, adecuado para la estructura temporal detectada. Entre las variables exógenas:
+> 
+> - **Choque estructural**, **shock extremo**, **earnings** y **shock_costos** resultaron significativos (p < 0.05), mostrando impacto relevante en la dinámica de la serie.
+> - **Margen operativo %**, **Revenue** y **riesgo país** no mostraron efectos estadísticamente significativos en este modelo.
+> - Los términos autoregresivos estacionales presentan coeficientes negativos y altamente significativos, indicando fuerte dependencia estacional en la serie.
+> 
+> Los residuos del modelo no presentan autocorrelación significativa, lo que sugiere un buen ajuste. Sin embargo, la alta curtosis y la no normalidad de los residuos indican la presencia de eventos extremos no capturados completamente por el modelo, típico en series financieras.
+> 
+> Este ajuste robustece el análisis predictivo al considerar shocks específicos y variables financieras relevantes, optimizando así la capacidad de pronóstico del modelo SARIMAX para la acción de Starbucks.
+
+
 El modelo convergente para los retornos logarítmicos fue identificado como **SARIMAX $(0, 1, 0) \times (2, 1, 0)_{21}$**. La ausencia de un componente AR ($p=0$) y MA ($q=0$) , y la presencia de un AR estacional de 2do orden junto a la tendencia indica que el mercado corrige rápidamente sus expectativas basándose en los valores estacionales anteriores, siendo de fuerte influencia los "shocks cíclicos" (Eventos o Noticias).
 
 #### **Inferencia sobre Variables Exógenas y Selección de Características (Feature Selection)**
@@ -367,6 +601,73 @@ Para aislar los verdaderos *drivers* del retorno accionario de Starbucks, se eva
     * *Interpretación:* Mide la capacidad de la empresa para expandir su línea superior (Top-line growth). Al igual que el margen operativo, su relevancia empírica en el modelo dinámico diario permite contrastar si los operadores algorítmicos ponderan el volumen de ventas históricas para proyectar retornos futuros.
 
 > 📌 **Anotación de Optimización (Feature Selection):**  Bajo el principio de parsimonia, todas aquellas variables de la matriz inicial cuyo $P\text{-valor}$ resultó superior a 0.05 (careciendo de significancia estadística) fueron rigurosamente depuradas del modelo estocástico final para evitar (*Overfitting*), reduciendo el "ruido" de la matriz exógena e incrementando la capacidad de generalización del modelo frente a datos no vistos.
+
+#### Modelo SARIMAX Final: Estimación e Inferencia
+
+Una vez identificado el orden estructural óptimo mediante Auto-ARIMA y depuradas las variables exógenas no significativas, se procedió a estimar el modelo final **SARIMAX(0,1,0)(2,1,0)[21]**, cuyos resultados se presentan a continuación.
+
+**Resultados del Modelo SARIMAX(0,1,0)(2,1,0)[21] con Variables Exógenas:**
+
+| Dep. Variable:          | Adj Close                     | No. Observations:        | 980                 |
+|:------------------------|:------------------------------|:-------------------------|:--------------------|
+| Model:                  | SARIMAX(0, 1, 0)x(2, 1, 0, 21) | Log Likelihood           | -1829.064           |
+| Date:                   | lu., 16 feb. 2026             | AIC                      | 3672.127            |
+| Time:                   | 11:30:24                      | BIC                      | 3705.867            |
+| Sample:                 | 0                             | HQIC                     | 3685.005            |
+|                         | - 980                         |                          |                     |
+| Covariance Type:        | opg                           |                          |                     |
+
+| Variable               | Coeficiente | Error estándar | Z        | P>IzI | Conf. 0.025 | Conf. 0.975 |
+|------------------------|------------|---------------|----------|------|--------------|--------------|
+| choque_estructural     | 4.5603     | 2.227         | 2.048    | 0.041 | 0.196        | 8.925        |
+| shock_extremo          | -3.6533    | 0.340         | -10.739  | 0.000 | -4.320       | -2.987       |
+| earnings               | 0.8562     | 0.181         | 4.725    | 0.000 | 0.501        | 1.211        |
+| shock_costos           | -2.5656    | 0.608         | -4.220   | 0.000 | -3.757       | -1.374       |
+| ar.S.L21               | -0.7216    | 0.023         | -31.578  | 0.000 | -0.766       | -0.677       |
+| ar.S.L42               | -0.3510    | 0.023         | -15.452  | 0.000 | -0.395       | -0.306       |
+| sigma2                 | 3.1790     | 0.051         | 61.752   | 0.000 | 3.078        | 3.280        |
+
+
+
+| Estadístico                     | Valor   | Estadístico               | Valor    |
+|:--------------------------------|:--------|:--------------------------|:---------|
+| **Ljung-Box (L1) (Q)**          | 0.40    | **Jarque-Bera (JB)**      | 9922.31  |
+| **Prob(Q)**                     | 0.53    | **Prob(JB)**              | 0.00     |
+| **Heteroskedasticity (H)**      | 1.18    | **Skew**                  | 1.11     |
+| **Prob(H) (two-sided)**         | 0.15    | **Kurtosis**              | 18.97    |
+
+ >💡 **Interpretación:** 
+> 
+> **Especificación SARIMAX**  
+> Modelo **(0,1,0)(2,1,0)[21]**: Se aplicó una diferencia regular y una diferencia estacional de orden 21 para lograr estacionariedad. Incluye dos términos autorregresivos estacionales (AR estacional de rezagos 21 y 42). No presenta componentes AR ni MA regulares, lo que indica que la dinámica de corto plazo es completamente capturada por la estacionalidad y las variables exógenas.
+> 
+> **Variables Exógenas**  
+> Se retuvieron únicamente aquellas con **p-valor < 0.05**:  
+> - **choque_estructural** (4.56): Eventos de gobernanza (como cambios en la dirección) generan un impacto positivo y persistente en el precio.  
+> - **shock_extremo** (-3.65): Crisis reputacionales o geopolíticas agudas provocan caídas abruptas y significativas.  
+> - **earnings** (0.86): Los anuncios de resultados trimestrales generan un exceso de retorno positivo sistemático.  
+> - **shock_costos** (-2.57): Incrementos en costos de insumos (café, salarios) son castigados inmediatamente por el mercado.
+> 
+> **Términos Estacionales**  
+> - **ar.S.L21** (-0.72) y **ar.S.L42** (-0.35): La fuerte dependencia negativa en los ciclos de 21 y 42 días (aproximadamente 1 y 2 meses hábiles) indica que el precio ajusta rápidamente en dirección opuesta a los movimientos estacionales previos. Esto sugiere un comportamiento de reversión a la media dentro del ciclo mensual.
+> 
+> **Varianza**  
+> - **sigma2** (3.18): Varianza del error, estadísticamente significativa, que captura la volatilidad residual no explicada.
+> 
+> #### Diagnóstico de Residuos
+> 
+> **Ljung-Box (Q)**: 0.40 (p = 0.53) → No hay autocorrelación residual significativa, indicando que el modelo captura adecuadamente la estructura temporal.  
+> **Jarque-Bera (JB)**: 9922.31 (p = 0.00) → Residuos no normales, con alta curtosis (18.97) y asimetría positiva (1.11), reflejando la presencia de eventos extremos típicos en series financieras.  
+> **Heteroscedasticidad (H)**: 1.18 (p = 0.15) → No hay evidencia significativa de heteroscedasticidad, lo que sugiere varianza constante en los residuos.
+> 
+> 💡 **Conclusión del Ajuste:**  
+> - El modelo final **SARIMAX(0,1,0)(2,1,0)[21]** presenta un excelente ajuste estadístico: los residuos son ruido blanco (no autocorrelacionados) y homoscedásticos, cumpliendo los supuestos clave para un modelo lineal de series temporales.  
+> - La no normalidad de los residuos es esperable en contextos financieros debido a la presencia de *shocks* extremos, pero no invalida la capacidad predictiva del modelo, siempre que las predicciones puntuales sean insesgadas.  
+> - Las variables exógenas seleccionadas (choques estructurales, extremos, earnings y costos) demuestran ser **drivers fundamentales** del retorno diario de Starbucks, capturando tanto riesgos idiosincráticos como sistémicos.  
+> La estructura estacional de 21 días (mensual) y 42 días (bimestral) valida la hipótesis de que los ciclos institucionales y de reportes financieros gobiernan la dinámica de la acción en alta frecuencia.
+
+
+
 ### **4.5. Pronóstico Tradicional (Multi-Step Forecasting) y Limitaciones Estructurales**
 > Extractos: [04_adjustment_forecasting_and_validation.ipynb](../notebooks/04_adjustment,%20forecasting,%20and%20validation.ipynb) & [04.1_adjustment_forecasting_and_validation.ipynb](../notebooks/04.1_adjustment,%20forecasting,%20and%20validation.ipynb)
 
@@ -382,7 +683,15 @@ Al observar la curva de predicción (tanto en retornos logarítmicos como en su 
 
 > 💡 **Interpretación (Limitación Estructural):**  Este comportamiento **no es un error de código**, sino una **limitación matemática intrínseca de los modelos de la familia ARIMA**. En horizontes de pronóstico largos, el impacto exógeno se suaviza, provocando que el pronóstico sufra un sesgo de "reversión a la media" severo.
 
-**Conclusión Metodológica:** Se dictamina que el pronóstico tradicional estático **no es una opción viable** para la toma de decisiones financieras ni para el *trading* algorítmico, ya que suprime la varianza estocástica del activo. Esta carencia de predictibilidad justifica la necesidad *imperativa* de migrar hacia una arquitectura de validación dinámica.
+**Sobre Inversión:** El intervalo de confianza es demasiado amplio (alta incertidumbre).  
+La proyección alcista no es suficientemente confiable para tomar una decisión real de inversión.
+
+**Problemas observados:**
+- Forecast con varianza muy alta.
+- Posible mala especificación del modelo.
+- No evidencia clara de superioridad frente a un *random walk*.
+
+``Usarlo solo como herramienta complementaria, no como señal única.``
 
 ### **4.6. Simulación Predictiva Dinámica (Walk-Forward Validation)**
 > Extractos: [04_adjustment_forecasting_and_validation.ipynb](../notebooks/04_adjustment,%20forecasting,%20and%20validation.ipynb) & [04.1_adjustment_forecasting_and_validation.ipynb](../notebooks/04.1_adjustment,%20forecasting,%20and%20validation.ipynb)
@@ -394,23 +703,40 @@ Bajo esta arquitectura de aprendizaje continuo, el algoritmo abandona la predicc
 2. Se revela la cotización real del mercado en el momento $t+1$ (el modelo "observa" la realidad).
 3. El algoritmo actualiza su vector de memoria histórica, re-optimiza parcialmente sus pesos autorregresivos e incorpora las nuevas variables exógenas observadas para predecir $t+2$.
 
+> Este es un concepto que no trabajaremos aquí y se dejará para futuros proyectos
 
 ### **4.7. Evaluación de Rendimiento y Métricas de Error Definitivas**
 > Extractos: [04_adjustment_forecasting_and_validation.ipynb](../notebooks/04_adjustment,%20forecasting,%20and%20validation.ipynb) & [04.1_adjustment_forecasting_and_validation.ipynb](../notebooks/04.1_adjustment,%20forecasting,%20and%20validation.ipynb)
 
 Regresando a las predicciones clásicas para el modelo SARIMAX ajustado obtenemos:
 
-* **Error Cuadrático Medio (MSE):** `6390.7592`. 
+
+| Métrica | Valor | Interpretación |
+|---------|------:|----------------|
+| MSE     | 6390.7592 | Cuadrado medio del error. Penaliza fuertemente grandes desviaciones. |
+| RMSE    | $79.94 USD | En promedio, el modelo se equivoca alrededor de 80 USD por acción. Si la acción está entre 90–110 USD, el error es demasiado alto en términos prácticos. |
+| MAE     | $73.27 USD | Error absoluto promedio de 73 USD, indicando que las predicciones están consistentemente alejadas del valor real. |
+| MAPE    | 84.78% | Error porcentual crítico. Un 85% indica que el modelo no captura adecuadamente la dinámica de la serie. |
+| Sesgo   | nan | No calculable en este conjunto de datos; indica ausencia de tendencia sistemática clara en el error. |
+
+> 💡 **Interpretación:** 
+> - El RMSE y MAE confirman que las predicciones individuales son significativamente imprecisas.  
+> - El MAPE muestra que el modelo falla en capturar la variabilidad relativa de la acción, siendo poco útil para predicciones exactas.  
+> - En conjunto, estos indicadores sugieren que el modelo puede servir como referencia exploratoria o complementaria, pero no como guía directa de inversión.
 
 ---
+<div style="page-break-after: always;"></div>
 
 ## **5. Conclusiones y Recomendaciones**
 
 1. **Sobre la Hipótesis Fundamental:** La integración de estados financieros como variables exógenas enriquece el modelo. Las caídas del precio durante 2024 y 2025 no fueron exclusivamente volatilidad estocástica, sino ajustes racionales del mercado ante contracciones documentadas en el *Operating Margin*.
 2. **Sobre la Sensibilidad Cualitativa:** El modelo SARIMAX comprobó que la cotización de SBUX es altamente reactiva al *Management* (Gestión directiva). La variable de intervención del CEO Brian Niccol marcó el cambio estructural más fuerte en la historia reciente de la serie.
-3. **Recomendación:** Se sugiere la inclusión de variables macroeconómicas directas, como el Índice de Precios al Consumidor (IPC) global para robustecer aún más los determinantes externos del modelo.
+3. **Recomendación:** Se sugiere la inclusión de variables macroeconómicas directas, como el Índice de Precios al Consumidor (IPC) global para robustecer aún más los determinantes externos del modelo. (También se sugiere ver el factor Inflación)
+4. **Conclusión Metodológica:** Se dictamina que el pronóstico tradicional estático **no es una opción viable** para la toma de decisiones financieras ni para el *trading* algorítmico, ya que suprime la varianza estocástica del activo. Esta carencia de predictibilidad justifica la necesidad *imperativa* de migrar hacia una arquitectura de validación dinámica.
+5. **Acerca de la Inversión:** Es mejor esperar y ver la evolución de la serie, observando si se estabiliza, recordemos que en el último reporte de Starbucks (público) se denota que si bien se ha llegado a estabilizar actualmente con la ayuda del CEO Brian Niccol, aún es muy pronto para decir que Starbucks esta empezando su nueva crecida.
 
 ---
+<div style="page-break-after: always;"></div>
 
 ## **6. Anexos y Referencias**
 

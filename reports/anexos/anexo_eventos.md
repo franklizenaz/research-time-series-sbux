@@ -1,14 +1,26 @@
-# ANEXO A: Bitácora de Eventos y Shocks Externos (Ticker: SBUX)
+# ANEXO B: Bitácora de Eventos y Shocks Externos (Ticker: SBUX)
 **Proyecto:** Análisis Predictivo y Caracterización de Serie de Tiempo mediante Modelo SARIMA aplicado a Starbucks Corporation (SBUX)
 **Investigador:** Frankli Zeña Zeña
 **Institución:** Universidad Nacional de Ingeniería (UNI) - FIEECS
 
 ---
 
+![Presentación](https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/f8/c9/8c/starbucks-coffee-honduras.jpg?w=900&h=500&s=1)
+
+---
+
+ <div style="page-break-after: always;"></div>
+
 ## 1. Introducción al Anexo
 Este documento contiene la recopilación cronológica de eventos cualitativos que impactaron la cotización de **Starbucks Corporation (SBUX)** y sus principales competidores (Luckin Coffee, Dunkin', McCafé y Costa Coffee). El objetivo es proporcionar una base de datos de "variables dummy" o eventos de intervención para refinar el ajuste del modelo estadístico SARIMA, permitiendo distinguir entre ruido blanco estocástico y movimientos direccionales inducidos por noticias de mercado, guerras de precios o cambios estructurales.
 
 ---
+
+![Imagen Polémica](https://elceo.com/wp-content/uploads/2024/10/starbucks_promociones_ceo_brian_niccol.jpg)
+
+---
+
+ <div style="page-break-after: always;"></div>
 
 ## 2. Registro de Eventos por Periodo
 
